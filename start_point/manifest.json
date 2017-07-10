@@ -1,0 +1,19 @@
+
+{
+  "visible_filenames": [
+    "HikerTest.java",
+    "Hiker.java",
+    "cyber-dojo.sh"
+  ],
+
+  "filename_extension": ".java",
+
+  "display_name": "Java, JUnit-Sqlite",
+
+  "image_name": "cyberdojofoundation/java_junit_sqlite",
+
+  "progress_regexs": [
+    "Tests run\\: (\\d)+,(\\s)+Failures\\: (\\d)+",
+    "OK \\((\\d)+ test(s)?\\)"
+  ]
+}

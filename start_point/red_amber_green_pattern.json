@@ -1,0 +1,16 @@
+
+{
+  "green":
+    {
+      "filename":"Hiker.java",
+      "from":"VALUES ('6 * 9', 54);",
+      "to":"VALUES ('6 * 9', 42);"
+    }
+  ,
+  "amber":
+    {
+      "filename":"Hiker.java",
+      "from":"class Hiker",
+      "to":"sdsdclass Hiker"
+    }
+}
