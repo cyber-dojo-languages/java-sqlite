@@ -1,5 +1,6 @@
 
 {
+  "runner_statefull_only":true,
   "green":
     {
       "filename":"Hiker.java",
