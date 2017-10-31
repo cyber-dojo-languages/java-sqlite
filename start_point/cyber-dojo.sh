@@ -9,5 +9,3 @@ if [ $? -eq 0 ]; then
     `ls -1 *Test*.class | grep -v '\\$' | sed 's/\(.*\)\..*/\1/'` \
     | grep -Ev 'org.junit.runner|org.junit.internal|sun.reflect|org.junit.Assert|java.lang.reflect|org.hamcrest'
 fi
-
-chmod 0775 /sandboxes/shared/*
