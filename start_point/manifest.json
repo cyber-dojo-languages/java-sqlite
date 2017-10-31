@@ -1,16 +1,21 @@
 
 {
+  "display_name": "Java, JUnit-Sqlite",
+
   "visible_filenames": [
     "HikerTest.java",
     "Hiker.java",
     "cyber-dojo.sh"
   ],
 
-  "filename_extension": ".java",
-
-  "display_name": "Java, JUnit-Sqlite",
-
   "image_name": "cyberdojofoundation/java_junit_sqlite",
 
-  "runner_choice": "stateful"
+  "runner_choice": "stateful",
+
+  "filename_extension": ".java",
+
+  "progress_regexs": [
+      "Tests run\\: (\\d)+,(\\s)+Failures\\: (\\d)+",
+      "OK \\((\\d)+ test(s)?\\)"
+  ]
 }
