@@ -1,5 +1,5 @@
 services: docker
-language: generic
+language: bash
 
 script:
     - SCRIPT=run_build_image.sh

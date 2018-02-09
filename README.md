@@ -1,4 +1,4 @@
-# java-junit
+# Java, SQLite
 
-![Build Status](https://travis-ci.org/cyber-dojo-languages/java-junit.svg?branch=master)
+![Build Status](https://travis-ci.org/cyber-dojo-languages/java-sqlite.svg?branch=master)
 
