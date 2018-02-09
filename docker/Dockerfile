@@ -1,4 +1,4 @@
-FROM  cyberdojofoundation/java:1.8
+FROM  cyberdojofoundation/java
 LABEL maintainer=jon@jaggersoft.com
 
 RUN apk --update add sqlite
