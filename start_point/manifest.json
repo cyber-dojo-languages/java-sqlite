@@ -10,7 +10,7 @@
 
   "image_name": "cyberdojofoundation/java_junit_sqlite",
 
-  "runner_choice": "stateful",
+  "runner_choice": "stateless",
 
   "filename_extension": ".java",
 
