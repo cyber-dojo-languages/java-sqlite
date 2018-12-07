@@ -33,5 +33,5 @@ public class Hiker {
     }
 
     private static String connectionString =
-        "jdbc:sqlite:/sandboxes/shared/change-me.db";
+        "jdbc:sqlite:/sandbox/hiker.db";
 }
