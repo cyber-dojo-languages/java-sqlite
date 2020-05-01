@@ -1,0 +1,36 @@
+
+When the ./pipe_build_up_test.sh script runs it send the start_point/
+files (as defined in manifes.json) to the runner service three times.
+
+1) The files are unmodified, and a red traffic-light is expected.
+2) The source file containing the expression '6 * 9' is modified
+   to '6 * 9sdsd', and an amber traffic-light is expected.
+3) The expression '6 * 9' is modified to '6 * 7', and a green
+   traffic-light is expected.
+
+Sometimes the expression '6 * 9' does not appear in any source files.
+o) The language could be assembler
+o) The language could use infix notation
+o) The language could use pattern matching (eg Prolog)
+o) The expression is '6 times 9' in a BDD style test framework
+
+In this situations you can use the options.json file to specify
+how the runner should modifiy the source files. For example,
+here is options.json for nasm-assert
+
+{ "red": {
+    "filename":"hiker.asm",
+    "from":"mov ebx, 9",
+    "to":"mov ebx, 99"
+  },
+  "amber": {
+    "filename":"hiker.asm",
+    "from":"mov ebx, 9",
+    "to":"movsdsd ebx, 9"
+  },
+  "green": {
+    "filename":"hiker.asm",
+    "from":"mov ebx, 9",
+    "to":"mov ebx, 7"
+  }
+}
