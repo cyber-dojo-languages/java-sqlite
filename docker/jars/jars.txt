@@ -1,0 +1,10 @@
+This file contains the locations to download the relevent .jar files
+Current version in parentheses
+
+** Newer versions of mockito-core (4.x up) do not seem to work with powermockito
+
+(3.0)       https://mvnrepository.com/artifact/org.hamcrest/hamcrest
+(4.13.2)    https://mvnrepository.com/artifact/junit/junit
+(2.0.16)    https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+(2.0.16)    https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+(3.47.0.0)  https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc

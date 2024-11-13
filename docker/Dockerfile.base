@@ -1,4 +1,4 @@
-FROM cyberdojofoundation/java-21:b3ec814
+FROM ghcr.io/cyber-dojo-languages/java-21:072fa2a
 LABEL maintainer=jon@jaggersoft.com
 
 RUN apk --update add sqlite

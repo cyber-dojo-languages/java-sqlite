@@ -1,0 +1,24 @@
+name: Main
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  PACKAGES_TOKEN: ${{ secrets.GITHUB_TOKEN }}     # Token for GHCR
+  PACKAGES_USERNAME: ${{ github.actor }}          # Username for GHCR
+  REPO_NAME: ${{ github.event.repository.name }}  # Repository name (so image_builder can check if it's testing itself)
+  TYPE: ${{ github.event_name }}                  # Event type (push or schedule) (so image_builder doesn't push images to GHCR on schedule)
+
+jobs:
+
+  build-publish-trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build image, test it, push it dockerhub, notify dependents
+        run: ./pipe_build_up_test.sh
