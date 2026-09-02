@@ -1,8 +1,24 @@
-FROM ghcr.io/cyber-dojo-languages/java-21:072fa2a
+# JDK 26. The AOT caches recorded below need 24 or newer for -XX:AOTCacheOutput,
+# which records in one step; the java-21 base this image used before cannot.
+FROM ghcr.io/cyber-dojo-languages/java:5c97081
 LABEL maintainer=jon@jaggersoft.com
 
+# The sqlite command-line tool, so a kata can be inspected from the shell. The
+# driver a kata compiles against is a jar, and comes from pom.xml below.
 RUN apk --update add sqlite
 
-COPY /jars/* /junit/
+# The jars are resolved from pom.xml at build time rather than committed here,
+# so the image tracks releases and this repo holds names instead of binaries.
+COPY pom.xml /tmp/
+COPY install_jars.sh /tmp/
+RUN bash /tmp/install_jars.sh /junit \
+ && rm -f /tmp/install_jars.sh
 
-COPY red_amber_green.rb /usr/local/bin
+# A kata's test run reads the two AOT caches this leaves in /aot, one for the
+# JVM that compiles and one for the JVM that runs the tests, instead of loading
+# those classes from the jars again on every [test] press. The script explains
+# which classes each holds and why there have to be two.
+COPY throwaway_kata /tmp/throwaway_kata
+COPY record_aot_caches.sh /tmp/
+RUN bash /tmp/record_aot_caches.sh /junit \
+ && rm -rf /tmp/record_aot_caches.sh /tmp/throwaway_kata

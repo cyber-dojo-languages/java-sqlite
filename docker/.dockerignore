@@ -1,3 +1,5 @@
 *
-!jars/
-!red_amber_green.rb
+!pom.xml
+!install_jars.sh
+!record_aot_caches.sh
+!throwaway_kata/
