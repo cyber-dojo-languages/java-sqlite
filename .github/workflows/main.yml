@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: '0 9 * * MON'
 
 jobs:
 
@@ -11,4 +13,6 @@ jobs:
     uses: cyber-dojo-languages/reusable-actions-workflows/.github/workflows/build-image-per-arch.yml@main
     permissions:
       packages: write
-      contents: read
+      # write, not read, because the called workflow commits to this repo to
+      # stop GitHub disabling the schedule above after 60 days without one.
+      contents: write
