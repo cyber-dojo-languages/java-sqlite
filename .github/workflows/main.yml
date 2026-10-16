@@ -16,3 +16,7 @@ jobs:
       # write, not read, because the called workflow commits to this repo to
       # stop GitHub disabling the schedule above after 60 days without one.
       contents: write
+    # The GitHub App that commits this image's version changes downstream.
+    secrets:
+      PROPAGATE_APP_ID: ${{ secrets.PROPAGATE_APP_ID }}
+      PROPAGATE_APP_PRIVATE_KEY: ${{ secrets.PROPAGATE_APP_PRIVATE_KEY }}
