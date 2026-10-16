@@ -48,6 +48,43 @@ mvn --batch-mode --no-transfer-progress dependency:copy-dependencies \
 # The sandbox user reads these at run time and owns none of them.
 chmod 0644 "${JARS_DIR}"/*.jar
 
+# Returns the version Maven resolved for one artifact, read from the name of
+# the jar it copied, so the record is what the image holds.
+jar_version()
+{
+  local -r artifact="${1}"
+  ls "${JARS_DIR}" | sed -n "s/^${artifact}-\([0-9][0-9.]*[0-9]\)\.jar$/\1/p"
+}
+
+# Appends one test framework to the test_frameworks list the base image
+# wrote in /versions.json, keeping any entry an earlier image added. Stops
+# the build if the list is not found, rather than record nothing. Short grep
+# flags because busybox grep has no long ones.
+add_test_framework()
+{
+  local -r name="${1}"
+  local -r version="${2}"
+  local -r entry="{\"name\": \"${name}\", \"version\": \"${version}\"}"
+  if [ -z "${version}" ]; then
+    echo "Found no version for ${name} in ${JARS_DIR}" >&2
+    exit 1
+  fi
+  if grep -q '"test_frameworks": \[\]' /versions.json; then
+    sed -i "s|\"test_frameworks\": \[\]|\"test_frameworks\": [${entry}]|" /versions.json
+  else
+    sed -i "/\"test_frameworks\": \[/s|}\]|}, ${entry}]|" /versions.json
+  fi
+  if ! grep -q -F "${entry}" /versions.json; then
+    echo "Could not add ${name} to /versions.json" >&2
+    cat /versions.json >&2
+    exit 1
+  fi
+}
+
+add_test_framework SQLite "$(jar_version sqlite-jdbc)"
+add_test_framework JUnit "$(jar_version junit)"
+cat /versions.json
+
 cd /
 rm -rf "${POM_DIR}" /tmp/pom.xml ~/.m2
 apk del maven
