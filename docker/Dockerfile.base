@@ -1,6 +1,6 @@
 # JDK 26. The AOT caches recorded below need 24 or newer for -XX:AOTCacheOutput,
 # which records in one step; the java-21 base this image used before cannot.
-FROM ghcr.io/cyber-dojo-languages/java:9db6557
+FROM ghcr.io/cyber-dojo-languages/java:1a1c09c@sha256:47c4656336fd2de74ec486cecfc8e239ebafb402f5e3539d5d45da623ebe21e4
 LABEL maintainer=jon@jaggersoft.com
 
 # The sqlite command-line tool, so a kata can be inspected from the shell. The
